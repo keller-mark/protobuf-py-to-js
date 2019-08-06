@@ -5,9 +5,14 @@
     </head>
     <body>
         <p>protobuf python-to-js demo</p>
-        <script type="text/javascript" src="/js/protobufjs/dist/protobuf.js"></script>
+        <script type="text/javascript" src="/node_modules/protobufjs/dist/protobuf.js"></script>
+        <script type="text/javascript" src="/io/dst/addressbook.proto.lib.js"></script>
         <script type="text/javascript">
-            console.log(protobuf)
+            fetch('/data')
+                .then((response) => {
+                    console.log(response);
+                })
+
         </script>
     </body>
 </html>
