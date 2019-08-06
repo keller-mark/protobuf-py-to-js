@@ -6,13 +6,27 @@
     <body>
         <p>protobuf python-to-js demo</p>
         <script type="text/javascript" src="/node_modules/protobufjs/dist/protobuf.js"></script>
-        <script type="text/javascript" src="/io/dst/addressbook.proto.lib.js"></script>
         <script type="text/javascript">
-            fetch('/data')
-                .then((response) => {
-                    console.log(response);
-                })
-
+            protobuf.load("/io/dst/addressbook.proto.json", (err, root) => {
+                if (err) throw err;
+                
+                // Obtain a message type
+                const AddressBook = root.lookupType("AddressBook");
+                // Fetch the serialized data
+                fetch('/data')
+                    .then((response) => {
+                        return response.blob();
+                    })
+                    .then((blob) => {
+                        return blob.arrayBuffer();
+                    })
+                    .then((arrayBuffer) => {
+                        const array = new Uint8Array(arrayBuffer);
+                        // Deserialize
+                        const data = AddressBook.decode(array);
+                        console.log(data);
+                    });
+            });
         </script>
     </body>
 </html>
