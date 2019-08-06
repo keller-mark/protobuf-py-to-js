@@ -10,12 +10,12 @@
         <pre id="serialized"></pre>
         <h5>Deserialized</h5>
         <pre id="deserialized"></pre>
-
+        
         <script type="text/javascript" src="/node_modules/protobufjs/dist/protobuf.js"></script>
         <script type="text/javascript">
+            // Load the protobuf format compiled as JSON
             protobuf.load("/io/dst/addressbook.proto.json", (err, root) => {
                 if (err) throw err;
-                
                 // Obtain a message type
                 const AddressBook = root.lookupType("AddressBook");
                 // Fetch the serialized data
