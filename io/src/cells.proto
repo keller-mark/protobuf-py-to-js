@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+message Coord {
+    repeated double coord = 1;
+}
+
+message Cell {
+    map<string, Coord> mappings = 1;
+    Coord xy = 2;
+    map<string, int32> genes = 3;
+    map<string, string> factors = 4;
+    repeated Coord poly = 5;
+}
+
+message Cells {
+  repeated Cell cells = 1;
+}
