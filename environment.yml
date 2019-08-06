@@ -1,0 +1,6 @@
+name: protobuf-demo-env
+dependencies:
+  - python>=3.7
+  - anaconda
+  - protobuf>=3.8
+  - flask>=1.1
