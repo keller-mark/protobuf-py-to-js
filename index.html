@@ -4,7 +4,13 @@
         <title>protobuf python-to-js demo</title>
     </head>
     <body>
-        <p>protobuf python-to-js demo</p>
+        <h3>protobuf python-to-js demo</h3>
+
+        <h5>Serialized</h5>
+        <pre id="serialized"></pre>
+        <h5>Deserialized</h5>
+        <pre id="deserialized"></pre>
+
         <script type="text/javascript" src="/node_modules/protobufjs/dist/protobuf.js"></script>
         <script type="text/javascript">
             protobuf.load("/io/dst/addressbook.proto.json", (err, root) => {
@@ -22,9 +28,11 @@
                     })
                     .then((arrayBuffer) => {
                         const array = new Uint8Array(arrayBuffer);
+                        document.querySelector("#serialized").innerHTML = JSON.stringify(Array.from(array));
                         // Deserialize
                         const data = AddressBook.decode(array);
                         console.log(data);
+                        document.querySelector("#deserialized").innerHTML = JSON.stringify(data, null, '  ');
                     });
             });
         </script>
