@@ -7,9 +7,6 @@
     "protobufjs": "^6.8.8"
   },
   "devDependencies": {},
-  "scripts": {
-    "start": "python main.py"
-  },
-  "author": "",
+  "author": "Mark Keller",
   "license": "ISC"
 }
