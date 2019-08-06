@@ -1,12 +1,11 @@
 ## protobuf python-to-js demo
 
-Serializing data in python and deserializing in the browser using [protobuf](https://developers.google.com/protocol-buffers/).
+Serializing data in python and deserializing in the browser using [protobuf](https://developers.google.com/protocol-buffers/) and [protobufjs](https://www.npmjs.com/package/protobufjs).
 
 ### How it works
 - Docker container compiles `.proto` definitions to both Python output and JSON output
 - Flask server serializes data according to the Python class compiled from the `.proto` file
 - Flask server serves `index.html` page that does the following:
-    - load [protobufjs](https://www.npmjs.com/package/protobufjs)
     - load the JSON object compiled from the `.proto` file
     - fetch serialized data from Flask at `/data` endpoint
     - deserialize and display on the page
